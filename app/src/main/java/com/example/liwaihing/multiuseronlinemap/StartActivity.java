@@ -1,19 +1,61 @@
 package com.example.liwaihing.multiuseronlinemap;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class StartActivity extends ActionBarActivity {
+public class StartActivity extends Activity {
+
+    private LocationManager lm;
+    private boolean onGPS = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        lm = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+        LocationSensor ls = LocationSensor.getInstance();
+        permissionCheck();
+        if(onGPS) {
+            ls.setLocationListener(lm);
+        }
+        startUpFinish();
     }
 
+    private void permissionCheck(){
+        if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(@SuppressWarnings("unused")  DialogInterface dialog, @SuppressWarnings("unused") int id) {
+                            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, @SuppressWarnings("unused") int id) {
+                            dialog.cancel();
+                        }
+                    });
+            final AlertDialog alert = builder.create();
+            alert.show();
+        }
+        if(lm.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            onGPS = true;
+        }
+    }
+
+    private void startUpFinish(){
+        Intent i = new Intent(this, SpeedActivity.class);
+        startActivity(i);
+        this.finish();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

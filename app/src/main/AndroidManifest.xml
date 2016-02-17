@@ -39,6 +39,14 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" >
         </activity>
+        <activity
+            android:name=".Maps2Activity"
+            android:label="@string/title_activity_maps2" >
+        </activity>
+        <activity
+            android:name=".SpeedActivity"
+            android:label="@string/title_activity_speed" >
+        </activity>
     </application>
 
 </manifest>
