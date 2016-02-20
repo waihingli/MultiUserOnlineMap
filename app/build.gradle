@@ -31,6 +31,6 @@ dependencies {
     compile files('src/main/java/libs/firebase-client-android-2.5.1.jar')
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.google.android.gms:play-services:8.4.0'
     //compile 'com.firebase:firebase-client-android:2.2.3.+'
 }
