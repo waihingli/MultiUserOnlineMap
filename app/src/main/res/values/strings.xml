@@ -25,5 +25,6 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_maps2">Map</string>
     <string name="title_activity_speed">SpeedActivity</string>
+    <string name="title_activity_map">Map</string>
 
 </resources>

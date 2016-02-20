@@ -12,22 +12,23 @@ import android.view.MenuItem;
 
 public class StartActivity extends Activity {
 
-    private LocationManager lm;
     private boolean onGPS = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        lm = (LocationManager) this.getSystemService(LOCATION_SERVICE);
-        LocationSensor ls = LocationSensor.getInstance();
-        permissionCheck();
-        if(onGPS) {
-            ls.setLocationListener(lm);
-        }
+
+//        startService();
+//        permissionCheck();
         startUpFinish();
     }
 
+    private void startService(){
+        startActivity(LocationService.class);
+        startActivity(SensorService.class);
+    }
+/*
     private void permissionCheck(){
         if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -50,11 +51,14 @@ public class StartActivity extends Activity {
             onGPS = true;
         }
     }
-
+*/
     private void startUpFinish(){
-        Intent i = new Intent(this, SpeedActivity.class);
+        startActivity(MapActivity.class);
+    }
+
+    private void startActivity(Class c){
+        Intent i = new Intent(this, c);
         startActivity(i);
-        this.finish();
     }
 
     @Override

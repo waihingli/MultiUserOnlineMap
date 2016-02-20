@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends Activity implements OnMapReadyCallback {
+public class MapsActivityOld extends Activity implements OnMapReadyCallback {
     Toolbar toolbar;
 
 
@@ -26,9 +26,6 @@ public class MapsActivity extends Activity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setActionBar(toolbar);
 
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);

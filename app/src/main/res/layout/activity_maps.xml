@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="com.example.liwaihing.multiuseronlinemap.MapsActivity">
+    tools:context="com.example.liwaihing.multiuseronlinemap.MapsActivityOld">
 
     <LinearLayout
         android:orientation="vertical"
@@ -30,6 +30,13 @@
         android:layout_height="fill_parent"
         android:id="@+id/navigation_view"
         android:layout_gravity="start"
-        app:menu="@menu/drawer_menu"/>
+        app:menu="@menu/drawer_menu">
+
+        <include
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            layout="@layout/layout_menu"
+            android:id="@+id/menu" />
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
