@@ -19,7 +19,6 @@ public class MapActivity extends FragmentActivity {
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private Location currentLocation = null;
     private Velocity velocity;
-    private DbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,6 @@ public class MapActivity extends FragmentActivity {
         setContentView(R.layout.activity_map);
 
         velocity = Velocity.getInstance();
-        dbHelper = new DbHelper();
         setUpMapIfNeeded();
     }
 
@@ -55,10 +53,6 @@ public class MapActivity extends FragmentActivity {
         if(currentLocation != null){
 
         }
-    }
-
-    private void setUpDb(){
-
     }
 
 
